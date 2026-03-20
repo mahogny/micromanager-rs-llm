@@ -5,14 +5,14 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | C++ directory | Rust crate | Status | Notes |
 |---|---|---|---|
 | `89NorthLDI` | `mm-adapter-ldi` | done | ASCII `\n`, dynamic wavelengths |
-| `AAAOTF` | — | todo | Crystal Technology AOTF, serial |
+| `AAAOTF` | `mm-adapter-aaaotf` | done | Crystal Technology AOTF, serial |
 | `ABS` | — | sdk | Demo/test only |
 | `AMF` | — | sdk | No serial interface found |
 | `AOTF` | — | sdk | Uses inpout.dll (Windows LPT port I/O) |
 | `ASIFW1000` | `mm-adapter-asifw1000` | done | Binary filter wheel |
 | `ASIStage` | `mm-adapter-asi-stage` | done | `:A`/`:N` ASCII |
 | `ASITiger` | `mm-adapter-asi-tiger` | done | `:A`/`:N` ASCII, 115200 baud |
-| `ASIWPTR` | — | todo | ASI W-PTR serial device |
+| `ASIWPTR` | `mm-adapter-asi-wptr` | done | ASI W-PTR serial device |
 | `AgilentLaserCombiner` | — | sdk | LaserCombinerSDK.h |
 | `Aladdin` | `mm-adapter-aladdin` | done | ASCII `\r` |
 | `AlliedVisionCamera` | — | sdk | Vimba SDK |
@@ -21,11 +21,11 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `AndorLaserCombiner` | — | sdk | AB_ALC_REV64.dll |
 | `AndorSDK3` | — | sdk | Andor SDK3 |
 | `AndorShamrock` | — | sdk | Andor SDK |
-| `Aquinas` | — | todo | Microfluidics controller, serial (LGPL) |
+| `Aquinas` | `mm-adapter-aquinas` | done | Microfluidics controller, serial (LGPL) |
 | `Aravis` | — | sdk | GLib/GObject/GigE |
 | `Arduino` | `mm-adapter-arduino` | done | ASCII `\r` |
-| `Arduino32bitBoards` | — | todo | 32-bit Arduino variant, serial |
-| `ArduinoCounter` | — | todo | Arduino counter, serial |
+| `Arduino32bitBoards` | `mm-adapter-arduino32` | done | 32-bit Arduino variant, serial |
+| `ArduinoCounter` | `mm-adapter-arduino-counter` | done | Arduino counter, serial |
 | `Atik` | — | sdk | Atik camera SDK |
 | `BDPathway` | — | sdk | BD Pathway imaging system |
 | `BH_DCC_DCU` | — | sdk | Becker-Hickl photon counting |
@@ -38,12 +38,12 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `CairnOptoSpinUCSF` | — | sdk | Cairn/UCSF custom |
 | `Cephla` | — | sdk | Cephla controller |
 | `ChuoSeiki_MD5000` | `mm-adapter-chuoseiki` | done | ASCII `\r` |
-| `ChuoSeiki_QT` | — | todo | ChuoSeiki QT-series stages, serial |
+| `ChuoSeiki_QT` | `mm-adapter-chuoseiki-qt` | done | ChuoSeiki QT-series stages, serial |
 | `Cobolt` | `mm-adapter-cobolt` | done | ASCII `\r` |
-| `CoboltOfficial` | — | todo | Cobolt vendor-independent variant, serial |
+| `CoboltOfficial` | `mm-adapter-cobolt-official` | done | Cobolt vendor-independent variant, serial |
 | `CoherentCube` | `mm-adapter-coherent-cube` | done | ASCII `\r` |
 | `CoherentOBIS` | `mm-adapter-coherent-obis` | done | ASCII `\r` |
-| `CoherentScientificRemote` | — | todo | Coherent Scientific Remote, serial |
+| `CoherentScientificRemote` | `mm-adapter-coherent-scientific-remote` | done | Coherent Scientific Remote, serial |
 | `Conix` | `mm-adapter-conix` | done | `:A`/`:N` ASCII |
 | `CoolLEDpE300` | `mm-adapter-coolled` | done | CSS format |
 | `CoolLEDpE4000` | `mm-adapter-coolled-pe4000` | done | CSS format, 4-channel |
@@ -52,10 +52,10 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `DahengGalaxy` | — | sdk | Daheng SDK |
 | `DemoCamera` | `mm-adapter-demo` | done | Simulated |
 | `DirectElectron` | — | sdk | Direct Electron camera SDK |
-| `Diskovery` | — | todo | Intelligent Imaging spinning disk, serial |
+| `Diskovery` | `mm-adapter-diskovery` | done | Intelligent Imaging spinning disk, serial |
 | `Dragonfly` | — | sdk | Andor Dragonfly SDK |
-| `ESP32` | — | todo | ESP32 Arduino controller, serial |
-| `ETL` | — | todo | Electrically Tunable Lens, serial |
+| `ESP32` | `mm-adapter-esp32` | done | ESP32 Arduino controller, serial |
+| `ETL` | `mm-adapter-etl` | done | Electrically Tunable Lens, serial |
 | `Elveflow` | — | sdk | Elveflow microfluidics SDK |
 | `EvidentIX85` | — | sdk | Evident/Olympus IX85 SDK |
 | `EvidentIX85Win` | — | sdk | Evident/Olympus SDK (Windows) |
@@ -71,7 +71,7 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `HIDManager` | — | sdk | USB HID |
 | `HamiltonMVP` | `mm-adapter-hamilton-mvp` | done | `0x06` ACK binary |
 | `Hikrobot` | — | sdk | MVSDK |
-| `HydraLMT200` | — | todo | Hydra LMT-200 motion controller, serial |
+| `HydraLMT200` | `mm-adapter-hydra-lmt200` | done | Hydra LMT-200 motion controller, serial |
 | `IDSPeak` | — | sdk | IDS Peak SDK |
 | `IDS_uEye` | — | sdk | IDS uEye SDK |
 | `IIDC` | — | sdk | FireWire IIDC SDK |
@@ -85,29 +85,29 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `K8061` | — | sdk | Velleman K8061 USB HID |
 | `KuriosLCTF` | — | sdk | Thorlabs Windows DLLs only |
 | `LaserQuantumLaser` | `mm-adapter-laser-quantum` | done | ASCII `\r` |
-| `LeicaDMI` | — | todo | Leica DMI inverted microscope, serial |
-| `LeicaDMR` | — | todo | Leica DMR upright microscope, serial |
+| `LeicaDMI` | `mm-adapter-leica-dmi` | done | Leica DMI inverted microscope, serial |
+| `LeicaDMR` | `mm-adapter-leica-dmr` | done | Leica DMR upright microscope, serial |
 | `LeicaDMSTC` | — | sdk | Leica DMSTC (check protocol) |
 | `LightSheetManager` | — | sdk | Utility/aggregator |
 | `Ludl` | `mm-adapter-ludl` | done | `:A` ASCII |
-| `LudlLow` | — | todo | Low-level Ludl variant, serial |
+| `LudlLow` | `mm-adapter-ludl-low` | done | Low-level Ludl variant, serial |
 | `Lumencor` | — | sdk | LightEngineAPI vendor SDK |
-| `LumencorCIA` | — | todo | Lumencor CIA LED, serial |
+| `LumencorCIA` | `mm-adapter-lumencor-cia` | done | Lumencor CIA LED, serial |
 | `LumencorSpectra` | `mm-adapter-lumencor-spectra` | done | Binary write-only |
 | `Lumenera` | — | sdk | Lumenera camera SDK |
 | `MCCDAQ` | — | sdk | Measurement Computing NI-DAQ |
 | `MCL_MicroDrive` | — | sdk | Mad City Labs SDK |
 | `MCL_NanoDrive` | — | sdk | Mad City Labs SDK |
 | `MP285` | `mm-adapter-sutter-stage` | done | Sutter MP-285, `:A` ASCII |
-| `MPBLaser` | — | todo | MPB Communications fiber laser, serial |
+| `MPBLaser` | `mm-adapter-mpb-laser` | done | MPB Communications fiber laser, serial |
 | `MT20` | — | sdk | Leica MT20 (check protocol) |
 | `MaestroServo` | — | sdk | Check protocol |
 | `Marzhauser` | `mm-adapter-marzhauser` | done | ASCII `\r` |
-| `Marzhauser-LStep` | — | todo | Marzhauser LStep variant, serial |
-| `MarzhauserLStepOld` | — | todo | Older LStep variant, serial |
+| `Marzhauser-LStep` | `mm-adapter-marzhauser-lstep` | done | Marzhauser LStep variant, serial |
+| `MarzhauserLStepOld` | `mm-adapter-marzhauser-lstep-old` | done | Older LStep variant, serial |
 | `MatrixVision` | — | sdk | Matrix Vision camera SDK |
 | `MeadowlarkLC` | — | sdk | usbdrvd.h USB HID driver |
-| `MicroFPGA` | — | todo | FPGA controller, USB serial |
+| `MicroFPGA` | `mm-adapter-microfpga` | done | FPGA controller, USB serial |
 | `MicroPoint` | — | sdk | Andor MicroPoint SDK |
 | `Mightex` | — | sdk | Mightex camera SDK |
 | `Mightex_BLS` | — | sdk | Mightex LED SDK |
@@ -120,8 +120,8 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `NI100X` | — | sdk | National Instruments DAQ |
 | `NIDAQ` | — | sdk | National Instruments DAQ |
 | `NIMultiAnalog` | — | sdk | National Instruments DAQ |
-| `NKTSuperK` | — | todo | NKT Photonics SuperK, serial |
-| `NeoPixel` | — | todo | NeoPixel LED array, serial |
+| `NKTSuperK` | — | sdk | Requires NKTPDLL.h proprietary Windows DLL |
+| `NeoPixel` | `mm-adapter-neopixel` | done | NeoPixel LED array, serial |
 | `Neos` | `mm-adapter-neos` | done | No-response serial |
 | `NewportCONEX` | `mm-adapter-newport-stage` | done | ASCII `\r\n` |
 | `NewportSMC` | `mm-adapter-newport-stage` | done | ASCII `\r\n` |
@@ -133,10 +133,10 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `ObjectiveImaging` | — | sdk | Check protocol |
 | `Okolab` | — | sdk | okolib.h vendor SDK |
 | `Omicron` | `mm-adapter-omicron` | done | `?CMD`/`!CMD` hex `\r` |
-| `OpenCVgrabber` | — | sdk | OpenCV library |
-| `OpenFlexure` | — | todo | OpenFlexure stage, serial |
-| `OpenUC2` | — | todo | UC2 Arduino controller, serial |
-| `Oxxius` | — | todo | Oxxius LaserBoxx single laser, serial |
+| `OpenCVgrabber` | `mm-adapter-opencv` | done | OpenCV VideoCapture (requires `opencv` crate + OpenCV 4.x system install) |
+| `OpenFlexure` | `mm-adapter-openflexure` | done | OpenFlexure stage, serial |
+| `OpenUC2` | `mm-adapter-openuc2` | done | UC2 Arduino controller, serial |
+| `Oxxius` | `mm-adapter-oxxius-laserboxx` | done | Oxxius LaserBoxx single laser, serial |
 | `OxxiusCombiner` | `mm-adapter-oxxius` | done | ASCII `\r`, L6Cc combiner |
 | `PCO_Generic` | — | sdk | PCO camera SDK |
 | `PI` | — | sdk | PI (Physik Instrumente) SDK |
@@ -149,20 +149,20 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `PeCon2000` | `mm-adapter-pecon` | done | Raw 3-byte BCD |
 | `Pecon` | `mm-adapter-pecon` | done | Raw 3-byte BCD |
 | `PicardStage` | — | sdk | Check protocol |
-| `Piezosystem_30DV50` | — | todo | Piezosystem 30DV50, serial |
-| `Piezosystem_NV120_1` | — | todo | Piezosystem NV-120/1, serial |
-| `Piezosystem_NV40_1` | — | todo | Piezosystem NV-40/1, serial |
-| `Piezosystem_NV40_3` | — | todo | Piezosystem NV-40/3, serial |
-| `Piezosystem_dDrive` | — | todo | Piezosystem dDrive, serial |
+| `Piezosystem_30DV50` | `mm-adapter-piezosystem-30dv50` | done | Piezosystem 30DV50, serial |
+| `Piezosystem_NV120_1` | `mm-adapter-piezosystem-nv120` | done | Piezosystem NV-120/1, serial |
+| `Piezosystem_NV40_1` | `mm-adapter-piezosystem-nv40-1` | done | Piezosystem NV-40/1, serial |
+| `Piezosystem_NV40_3` | `mm-adapter-piezosystem-nv40-3` | done | Piezosystem NV-40/3, serial |
+| `Piezosystem_dDrive` | `mm-adapter-piezosystem-ddrive` | done | Piezosystem dDrive, serial |
 | `Piper` | — | sdk | Check protocol |
 | `Pixelink` | — | sdk | Pixelink camera SDK |
 | `PlayerOne` | — | sdk | Player One Astronomy SDK |
 | `PointGrey` | — | sdk | FLIR/PointGrey FlyCapture SDK |
 | `PrecisExcite` | `mm-adapter-precis-excite` | done | ASCII `\r` |
 | `Prior` | `mm-adapter-prior` | done | ASCII `\r` |
-| `PriorLegacy` | — | todo | Legacy Prior variant, serial |
-| `PriorPureFocus` | — | todo | Prior PureFocus, serial |
-| `PrizmatixDevice` | — | todo | Prizmatix LED illuminator, serial |
+| `PriorLegacy` | `mm-adapter-prior-legacy` | done | Legacy Prior variant, serial |
+| `PriorPureFocus` | `mm-adapter-prior-purefocus` | done | Prior PureFocus, serial |
+| `PrizmatixDevice` | `mm-adapter-prizmatix` | done | Prizmatix LED illuminator, serial |
 | `PyDevice` | — | sdk | Python binding |
 | `QCam` | — | sdk | QImaging SDK |
 | `QSI` | — | sdk | QSI camera SDK |
@@ -174,9 +174,9 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `Revealer` | — | sdk | Check protocol |
 | `Sapphire` | `mm-adapter-sapphire` | done | ASCII `\r` |
 | `Scientifica` | `mm-adapter-scientifica` | done | ASCII `\r` |
-| `ScientificaMotion8` | — | todo | Scientifica Motion8 variant, serial |
+| `ScientificaMotion8` | `mm-adapter-scientifica-motion8` | done | Scientifica Motion8 variant, serial |
 | `ScionCam` | — | sdk | Scion camera SDK |
-| `ScopeLED` | — | todo | ScopeLED illuminator, serial |
+| `ScopeLED` | `mm-adapter-scopeled` | done | ScopeLED illuminator, serial |
 | `Sensicam` | — | sdk | PCO Sensicam SDK |
 | `SequenceTester` | — | sdk | Internal test utility |
 | `SerialManager` | — | sdk | Utility serial port manager |
@@ -194,54 +194,54 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `StandaStage` | — | sdk | Standa SDK |
 | `StarlightXpress` | — | sdk | Starlight Xpress camera SDK |
 | `SutterLambda` | `mm-adapter-sutter-lambda` | done | Binary |
-| `SutterLambda2` | — | todo | Sutter Lambda 2 (newer protocol), serial |
-| `SutterLambdaParallelArduino` | — | todo | Sutter Lambda + Arduino parallel, serial |
+| `SutterLambda2` | `mm-adapter-sutter-lambda2` | done | Sutter Lambda 2 (newer protocol), serial |
+| `SutterLambdaParallelArduino` | `mm-adapter-sutter-lambda-arduino` | done | Sutter Lambda + Arduino parallel, serial |
 | `SutterStage` | `mm-adapter-sutter-stage` | done | `:A` ASCII |
 | `TCPIPPort` | — | sdk | TCP/IP utility |
 | `TISCam` | — | sdk | TIS camera SDK |
 | `TSI` | — | sdk | Thorlabs Scientific Imaging SDK |
 | `TUCam` | — | sdk | Tucsen camera SDK |
-| `TeensyPulseGenerator` | — | todo | Teensy serial pulse generator |
+| `TeensyPulseGenerator` | `mm-adapter-teensy-pulse` | done | Teensy serial pulse generator |
 | `TeesnySLM` | — | sdk | Teensy SLM (check) |
 | `ThorlabsAPTStage` | — | sdk | Thorlabs APT SDK |
-| `ThorlabsCHROLIS` | — | todo | Thorlabs CHROLIS LED, serial |
+| `ThorlabsCHROLIS` | `mm-adapter-thorlabs-chrolis` | done | Thorlabs CHROLIS LED, serial |
 | `ThorlabsDC40` | — | sdk | TLDC2200.h vendor SDK |
 | `ThorlabsDCxxxx` | — | sdk | TLDC2200.h vendor SDK |
 | `ThorlabsElliptecSlider` | `mm-adapter-elliptec` | done | Hex-position `\r` |
 | `ThorlabsFilterWheel` | `mm-adapter-thorlabs-fw` | done | ASCII `\r` |
-| `ThorlabsPM100x` | — | todo | Thorlabs PM100x power meter, serial |
-| `ThorlabsSC10` | — | todo | Thorlabs SC10 shutter controller, serial |
-| `ThorlabsTSP01` | — | todo | Thorlabs TSP01 temp/humidity, serial |
+| `ThorlabsPM100x` | `mm-adapter-thorlabs-pm100x` | done | Thorlabs PM100x power meter, serial |
+| `ThorlabsSC10` | `mm-adapter-thorlabs-sc10` | done | Thorlabs SC10 shutter controller, serial |
+| `ThorlabsTSP01` | `mm-adapter-thorlabs-tsp01` | done | Thorlabs TSP01 temp/humidity, serial |
 | `ThorlabsUSBCamera` | — | sdk | Thorlabs camera SDK |
-| `Thorlabs_ELL14` | — | todo | Thorlabs ELL14 rotation stage, serial |
+| `Thorlabs_ELL14` | `mm-adapter-thorlabs-ell14` | done | Thorlabs ELL14 rotation stage, serial |
 | `Tofra` | `mm-adapter-tofra` | done | IMS MDrive ASCII `\r` |
-| `Toptica_iBeamSmartCW` | — | todo | Toptica iBeam Smart CW laser, serial |
-| `TriggerScope` | — | todo | Trigger scope controller, serial |
-| `TriggerScopeMM` | — | todo | TriggerScope MM variant, serial |
+| `Toptica_iBeamSmartCW` | `mm-adapter-toptica-ibeam` | done | Toptica iBeam Smart CW laser, serial |
+| `TriggerScope` | `mm-adapter-triggerscope` | done | Trigger scope controller, serial |
+| `TriggerScopeMM` | `mm-adapter-triggerscope-mm` | done | TriggerScope MM variant, serial |
 | `TwainCamera` | — | sdk | TWAIN SDK |
 | `TwoPhoton` | — | sdk | Custom two-photon hardware |
 | `USBManager` | — | sdk | USB utility |
 | `USB_Viper_QPL` | — | sdk | USB HID |
-| `UniversalMMHubSerial` | — | todo | Universal serial hub, serial |
+| `UniversalMMHubSerial` | `mm-adapter-universal-hub-serial` | done | Universal serial hub, serial |
 | `UniversalMMHubUsb` | — | sdk | Universal USB hub |
 | `UserDefinedSerial` | — | todo | User-defined serial device |
 | `Utilities` | — | sdk | Utility devices (StateDeviceShutter, etc.) |
-| `VariLC` | — | todo | Cambridge Research VariLC liquid crystal, serial |
+| `VariLC` | `mm-adapter-varilc` | done | Cambridge Research VariLC liquid crystal, serial |
 | `VarispecLCTF` | `mm-adapter-varispec` | done | ASCII `\r` |
 | `VisiTech_iSIM` | — | sdk | VisiTech iSIM SDK |
 | `Vincent` | `mm-adapter-vincent` | done | ASCII `\r` |
 | `Vortran` | `mm-adapter-vortran` | done | ASCII `\r` |
 | `WOSM` | — | sdk | Check protocol |
-| `WieneckeSinske` | — | todo | Wienecke & Sinske stage, serial |
+| `WieneckeSinske` | `mm-adapter-wienecke-sinske` | done | Wienecke & Sinske stage, serial |
 | `XCite120PC_Exacte` | `mm-adapter-xcite` | done | ASCII `\r` |
-| `XCiteLed` | — | todo | X-Cite LED variant, serial |
-| `XCiteXT600` | — | todo | X-Cite XT600 variant, serial |
-| `XLight` | — | todo | CrestOptics X-Light spinning disk, serial |
-| `XLightV3` | — | todo | CrestOptics X-Light V3, serial |
+| `XCiteLed` | `mm-adapter-xcite-led` | done | X-Cite LED variant, serial |
+| `XCiteXT600` | `mm-adapter-xcite-xt600` | done | X-Cite XT600 variant, serial |
+| `XLight` | `mm-adapter-xlight` | done | CrestOptics X-Light spinning disk, serial |
+| `XLightV3` | `mm-adapter-xlight-v3` | done | CrestOptics X-Light V3, serial |
 | `Xcite` | `mm-adapter-xcite` | done | ASCII `\r` |
 | `Ximea` | — | sdk | Ximea camera SDK |
-| `YodnE600` | — | todo | Yodn E600 LED, serial |
-| `Yokogawa` | — | todo | Yokogawa spinning disk, serial |
+| `YodnE600` | `mm-adapter-yodn-e600` | done | Yodn E600 LED, serial |
+| `Yokogawa` | `mm-adapter-yokogawa` | done | Yokogawa spinning disk, serial |
 | `ZWO` | — | sdk | ZWO ASI camera SDK |
 | `Zaber` | `mm-adapter-zaber` | done | ASCII `\n` (Zaber ASCII v2) |
 | `ZeissAxioZoom` | — | sdk | Zeiss SDK |
@@ -251,4 +251,4 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `iSIMWaveforms` | — | sdk | iSIM waveform utility |
 | `kdv` | — | sdk | Check protocol |
 | `nPoint` | — | sdk | nPoint piezo SDK |
-| `pgFocus` | — | todo | pgFocus autofocus, serial |
+| `pgFocus` | `mm-adapter-pgfocus` | done | pgFocus autofocus, serial |

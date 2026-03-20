@@ -1,0 +1,8 @@
+[package]
+name = "mm-adapter-opencv"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mm-device = { path = "../../mm-device" }
+opencv = { version = "0.98", default-features = false, features = ["videoio", "imgproc"] }

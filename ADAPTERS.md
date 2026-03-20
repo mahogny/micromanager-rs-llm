@@ -29,7 +29,7 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `Atik` | — | sdk | Atik camera SDK |
 | `BDPathway` | — | sdk | BD Pathway imaging system |
 | `BH_DCC_DCU` | — | sdk | Becker-Hickl photon counting |
-| `Basler` | — | sdk | Pylon SDK |
+| `Basler` | `mm-adapter-basler` | done | Pylon SDK (all platforms); `--features basler` |
 | `BaumerOptronic` | — | sdk | Baumer SDK |
 | `BlueboxOptics_niji` | `mm-adapter-niji` | done | Binary sync + `\r\n` |
 | `CARVII` | `mm-adapter-carvii` | done | Single-char ASCII `\r` |

@@ -106,4 +106,5 @@ members = [
     "adapters/mm-adapter-opencv",
     "adapters/mm-adapter-illuminate-led",
     "adapters/mm-adapter-iidc",
+    "adapters/mm-adapter-basler",
 ]

@@ -1,0 +1,13 @@
+[package]
+name = "mm-adapter-picam"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+picam = []
+
+[dependencies]
+mm-device = { path = "../../mm-device" }
+
+[build-dependencies]
+cc = "1"

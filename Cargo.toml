@@ -107,4 +107,6 @@ members = [
     "adapters/mm-adapter-illuminate-led",
     "adapters/mm-adapter-iidc",
     "adapters/mm-adapter-basler",
+    "adapters/mm-adapter-jai",
+    "adapters/mm-adapter-picam",
 ]

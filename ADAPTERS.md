@@ -80,7 +80,7 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `ImageProcessorChain` | — | sdk | Utility/aggregator |
 | `IntegratedLaserEngine` | — | sdk | Andor ILE SDK |
 | `IsmatecMCP` | `mm-adapter-ismatec` | done | Address-prefixed `*`-ACK |
-| `JAI` | — | sdk | JAI camera SDK |
+| `JAI` | `mm-adapter-jai` | done | Pleora eBUS SDK (all platforms); `--features jai` |
 | `K8055` | — | sdk | Velleman K8055 USB HID |
 | `K8061` | — | sdk | Velleman K8061 USB HID |
 | `KuriosLCTF` | — | sdk | Thorlabs Windows DLLs only |
@@ -140,7 +140,7 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `OxxiusCombiner` | `mm-adapter-oxxius` | done | ASCII `\r`, L6Cc combiner |
 | `PCO_Generic` | — | sdk | PCO camera SDK |
 | `PI` | — | sdk | PI (Physik Instrumente) SDK |
-| `PICAM` | — | sdk | Princeton Instruments SDK |
+| `PICAM` | `mm-adapter-picam` | done | PVCAM SDK (all platforms); `--features picam` |
 | `PIEZOCONCEPT` | — | sdk | Check protocol |
 | `PI_GCS` | — | sdk | PI GCS SDK |
 | `PI_GCS_2` | — | sdk | PI GCS SDK |

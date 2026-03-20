@@ -1,0 +1,13 @@
+[package]
+name = "mm-adapter-spot"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+spot = []
+
+[dependencies]
+mm-device = { path = "../../mm-device" }
+
+[build-dependencies]
+cc = "1"

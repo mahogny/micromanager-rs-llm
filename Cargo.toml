@@ -109,4 +109,7 @@ members = [
     "adapters/mm-adapter-basler",
     "adapters/mm-adapter-jai",
     "adapters/mm-adapter-picam",
+    "adapters/mm-adapter-tsi",
+    "adapters/mm-adapter-spot",
+    "adapters/mm-adapter-twain",
 ]

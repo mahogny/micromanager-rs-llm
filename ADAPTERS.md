@@ -188,7 +188,7 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `SpectralLMM5` | `mm-adapter-spectral-lmm5` | done | Hex-encoded binary `\r` |
 | `Spinnaker` | — | sdk | FLIR Spinnaker SDK |
 | `SpinnakerC` | — | sdk | FLIR Spinnaker SDK (C) |
-| `Spot` | — | sdk | Spot camera SDK |
+| `Spot` | `mm-adapter-spot` | done | SpotCam SDK (macOS/Windows); `--features spot` |
 | `Standa` | — | sdk | Standa 8SMC SDK |
 | `Standa8SMC4` | — | sdk | Standa 8SMC4 SDK |
 | `StandaStage` | — | sdk | Standa SDK |
@@ -199,7 +199,7 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `SutterStage` | `mm-adapter-sutter-stage` | done | `:A` ASCII |
 | `TCPIPPort` | — | sdk | TCP/IP utility |
 | `TISCam` | — | sdk | TIS camera SDK |
-| `TSI` | — | sdk | Thorlabs Scientific Imaging SDK |
+| `TSI` | `mm-adapter-tsi` | done | Thorlabs Scientific Camera SDK3 (all platforms); `--features tsi` |
 | `TUCam` | — | sdk | Tucsen camera SDK |
 | `TeensyPulseGenerator` | `mm-adapter-teensy-pulse` | done | Teensy serial pulse generator |
 | `TeesnySLM` | — | sdk | Teensy SLM (check) |
@@ -218,7 +218,7 @@ Status values: `done` | `todo` (pure serial, portable) | `sdk` (requires vendor 
 | `Toptica_iBeamSmartCW` | `mm-adapter-toptica-ibeam` | done | Toptica iBeam Smart CW laser, serial |
 | `TriggerScope` | `mm-adapter-triggerscope` | done | Trigger scope controller, serial |
 | `TriggerScopeMM` | `mm-adapter-triggerscope-mm` | done | TriggerScope MM variant, serial |
-| `TwainCamera` | — | sdk | TWAIN SDK |
+| `TwainCamera` | `mm-adapter-twain` | done | TWAIN DSM (Windows/Linux); `--features twain` |
 | `TwoPhoton` | — | sdk | Custom two-photon hardware |
 | `USBManager` | — | sdk | USB utility |
 | `USB_Viper_QPL` | — | sdk | USB HID |

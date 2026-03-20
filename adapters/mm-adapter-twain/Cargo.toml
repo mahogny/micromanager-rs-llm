@@ -1,0 +1,13 @@
+[package]
+name = "mm-adapter-twain"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+twain = []
+
+[dependencies]
+mm-device = { path = "../../mm-device" }
+
+[build-dependencies]
+cc = "1"

@@ -45,4 +45,7 @@ members = [
     "adapters/mm-adapter-csuw1",
     "adapters/mm-adapter-elliptec",
     "adapters/mm-adapter-asi-tiger",
+    "adapters/mm-adapter-zaber",
+    "adapters/mm-adapter-tofra",
+    "adapters/mm-adapter-lumencor-spectra",
 ]

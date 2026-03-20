@@ -82,6 +82,9 @@ The `CMMCore` engine:
 | `mm-adapter-vincent` | Vincent Associates Uniblitz shutter | ASCII `\r` | BSD 3-Clause |
 | `mm-adapter-vortran` | Vortran Stradus laser | ASCII `\r` | LGPL |
 | `mm-adapter-xcite` | Excelitas X-Cite arc lamp | ASCII `\r` | BSD 3-Clause |
+| `mm-adapter-zaber` | Zaber linear + XY stage | ASCII `\n` (Zaber ASCII v2) | BSD 3-Clause |
+| `mm-adapter-tofra` | TOFRA filter wheel, Z-drive, XY stage | IMS MDrive ASCII `\r` | BSD 3-Clause |
+| `mm-adapter-lumencor-spectra` | Lumencor Spectra/Aura/Sola LED (legacy) | Binary write-only | BSD 3-Clause |
 
 ## Building
 

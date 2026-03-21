@@ -179,7 +179,7 @@ These adapters need proprietary SDKs or closed hardware interfaces not available
 | CNCMicroscope | Custom hardware | ✓ | ✗ | ✓ |
 | [CairnOptoSpinUCSF](https://micro-manager.org/CairnOptospinUCSF) | Cairn/UCSF custom controller | ✓ | ✗ | ✓ |
 | Cephla | Cephla controller | ✓ | ✗ | ✓ |
-| DTOpenLayer | DAQ hardware I/O | ✓ | ✗ | ✓ |
+| [DTOpenLayer](https://micro-manager.org/DTOpenLayer) | DAQ hardware I/O | ✓ | ✗ | ✓ |
 | [DahengGalaxy](https://micro-manager.org/Daheng) | Daheng Galaxy SDK | ✓ | ✗ | ✗ |
 | [DirectElectron](https://micro-manager.org/DECamera) | Direct Electron camera SDK | ✓ | ✗ | ✗ |
 | Dragonfly | Andor Dragonfly SDK | ✓ | ✗ | ✗ |
@@ -188,8 +188,8 @@ These adapters need proprietary SDKs or closed hardware interfaces not available
 | [EvidentIX85Win](https://micro-manager.org/EvidentIX85Win) | Evident/Olympus SDK (Windows) | ✓ | ✗ | ✗ |
 | [EvidentIX85XYStage](https://micro-manager.org/EvidentIX85XYStage) | Evident/Olympus SDK | ✓ | ✗ | ✗ |
 | [FLICamera](https://micro-manager.org/FLICamera) | FLI camera SDK (`libfli.h`) | ✓ | ✗ | ✗ |
-| FakeCamera | Internal simulation utility | ✓ | ✗ | ✓ |
-| Fli | FLI SDK | ✓ | ✗ | ✗ |
+| [FakeCamera](https://micro-manager.org/FakeCamera) | Internal simulation utility | ✓ | ✗ | ✓ |
+| [Fli](https://micro-manager.org/FLICamera) | FLI SDK | ✓ | ✗ | ✗ |
 | [Fluigent](https://micro-manager.org/Fluigent) | `fgt_SDK.h` (GitHub) | ✓ | ✗ | ✗ |
 | FocalPoint | Prior FocalPoint | ✗ | ✗ | ✓ |
 | [FreeSerialPort](https://micro-manager.org/FreeSerialPort) | Utility serial port device | ✓ | ✗ | ✓ |
@@ -222,7 +222,7 @@ These adapters need proprietary SDKs or closed hardware interfaces not available
 | [Mightex_C_Cam](https://micro-manager.org/Mightex_C_Cam) | Mightex camera SDK | ✓ | ✗ | ✗ |
 | [Mightex_SB_Cam](https://micro-manager.org/Mightex_SB_Cam) | Mightex camera SDK | ✓ | ✗ | ✗ |
 | Modbus | libmodbus (LGPL, open-source) | ✓ | ✗ | ✓ |
-| Motic | Motic camera SDK | ✓ | ✗ | ✗ |
+| [Motic](https://micro-manager.org/MoticCamera) | Motic camera SDK | ✓ | ✗ | ✗ |
 | [MoticMicroscope](https://micro-manager.org/MoticMicroscope) | Motic SDK | ✓ | ✗ | ✗ |
 | Motic_mac | Motic SDK (macOS) | ✗ | ✓ | ✗ |
 | [NI100X](https://micro-manager.org/National_Instruments) | NI-DAQmx SDK | ✓ | ✗ | ✗ |
@@ -231,7 +231,7 @@ These adapters need proprietary SDKs or closed hardware interfaces not available
 | NKTSuperK | NKTPDLL.h Windows-only | ✓ | ✗ | ✗ |
 | [NikonKs](https://micro-manager.org/NikonKS) | Nikon Ks SDK | ✓ | ✗ | ✗ |
 | [NikonTE2000](https://micro-manager.org/NikonTE2000) | Nikon TE2000 SDK | ✓ | ✗ | ✓ |
-| NotificationTester | Internal test utility | ✓ | ✗ | ✓ |
+| [NotificationTester](https://micro-manager.org/NotificationTester) | Internal test utility | ✓ | ✗ | ✓ |
 | [OVP_ECS2](https://micro-manager.org/OVP_ECS2) | Check protocol | ✓ | ✗ | ✓ |
 | [ObjectiveImaging](https://micro-manager.org/ObjectiveImaging) | Check protocol | ✓ | ✗ | ✗ |
 | [Okolab](https://micro-manager.org/Okolab) | `okolib.h` vendor SDK | ✓ | ✗ | ✗ |
@@ -241,7 +241,7 @@ These adapters need proprietary SDKs or closed hardware interfaces not available
 | [PVCAM](https://micro-manager.org/PVCAM) | Photometrics PVCAM SDK | ✓ | ✗ | ✓ |
 | [ParallelPort](https://micro-manager.org/ParallelPort) | Windows LPT / Linux `/dev/parport` | ✓ | ✗ | ✓ |
 | [PicardStage](https://micro-manager.org/PicardStage) | Check protocol | ✓ | ✗ | ✗ |
-| Piper | Check protocol | ✓ | ✗ | ✗ |
+| [Piper](https://micro-manager.org/Piper) | Check protocol | ✓ | ✗ | ✗ |
 | [Pixelink](https://micro-manager.org/Pixelink) | Pixelink camera SDK | ✓ | ✗ | ✗ |
 | [PlayerOne](https://micro-manager.org/PlayerOne) | Player One Astronomy SDK | ✓ | ✗ | ✗ |
 | [PointGrey](https://micro-manager.org/Point_Grey_Research) | FLIR FlyCapture2 SDK | ✓ | ✗ | ✗ |
@@ -256,7 +256,7 @@ These adapters need proprietary SDKs or closed hardware interfaces not available
 | Revealer | Check protocol | ✓ | ✗ | ✗ |
 | [ScionCam](https://micro-manager.org/ScionCam) | Scion camera SDK | ✓ | ✗ | ✓ |
 | [Sensicam](https://micro-manager.org/Sensicam) | PCO Sensicam SDK | ✓ | ✗ | ✓ |
-| SequenceTester | Internal test utility | ✓ | ✗ | ✓ |
+| [SequenceTester](https://micro-manager.org/SequenceTester) | Internal test utility | ✓ | ✗ | ✓ |
 | [SerialManager](https://micro-manager.org/SerialManager) | Utility serial port manager | ✓ | ✓ | ✓ |
 | [SigmaKoki](https://micro-manager.org/SigmaKoki) | StCamD.h camera SDK | ✓ | ✗ | ✗ |
 | SimpleCam | Camera simulation utility | ✓ | ✓ | ✓ |
@@ -279,7 +279,7 @@ These adapters need proprietary SDKs or closed hardware interfaces not available
 | [ThorlabsUSBCamera](https://micro-manager.org/ThorlabsUSBCamera) | Thorlabs camera SDK | ✓ | ✗ | ✗ |
 | TwoPhoton | Custom two-photon hardware | ✓ | ✗ | ✗ |
 | [USBManager](https://micro-manager.org/USBManager) | USB utility | ✓ | ✗ | ✓ |
-| USB_Viper_QPL | USB HID | ✓ | ✗ | ✗ |
+| [USB_Viper_QPL](https://micro-manager.org/USB_Viper_QPL) | USB HID | ✓ | ✗ | ✗ |
 | [UniversalMMHubUsb](https://micro-manager.org/UniversalMMHubUsb) | Universal USB hub | ✓ | ✗ | ✓ |
 | [UserDefinedSerial](https://micro-manager.org/UserDefinedSerial) | *(todo — pure serial, not yet implemented)* | ✓ | ✓ | ✓ |
 | [Utilities](https://micro-manager.org/Utilities) | StateDeviceShutter, DAShutter, etc. | ✓ | ✗ | ✓ |
@@ -291,7 +291,7 @@ These adapters need proprietary SDKs or closed hardware interfaces not available
 | [ZeissCAN29](https://micro-manager.org/ZeissCAN29) | Zeiss CAN29 bus SDK | ✓ | ✗ | ✓ |
 | [dc1394](https://micro-manager.org/dc1394) | FireWire DC1394 library | ✓ | ✗ | ✓ |
 | iSIMWaveforms | iSIM waveform utility | ✓ | ✗ | ✗ |
-| kdv | Check protocol | ✓ | ✗ | ✓ |
+| [kdv](https://micro-manager.org/KDV) | Check protocol | ✓ | ✗ | ✓ |
 | [nPoint](https://micro-manager.org/NPointC400) | nPoint piezo SDK | ✓ | ✗ | ✓ |
 
 ## Building

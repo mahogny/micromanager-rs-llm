@@ -1,0 +1,7 @@
+This code is derived from https://github.com/micro-manager/mmCoreAndDevices
+
+Individual files have different licenses
+
+* Core code (MMCore) is under Lesser GPL (LGPL)
+* MMDevice is under BSD
+* Licenses for adapters vary; see the original source code and the micro-manager website

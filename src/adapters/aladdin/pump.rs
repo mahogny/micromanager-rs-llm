@@ -74,6 +74,7 @@ impl AladdinPump {
     }
 
     /// Send command and return the response line.
+    #[allow(dead_code)]
     fn query(&mut self, command: &str) -> MmResult<String> {
         let c = format!("{}\r", command);
         self.call_transport(|t| { let r = t.send_recv(&c)?; Ok(r.trim().to_string()) })

@@ -70,6 +70,7 @@ impl CoboltLaser {
         })
     }
 
+    #[allow(dead_code)]
     fn refresh_power_readback(&mut self) -> MmResult<f64> {
         let resp = self.cmd("p?")?;
         resp.parse::<f64>().map_err(|_| MmError::SerialInvalidResponse)

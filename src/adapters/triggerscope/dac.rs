@@ -67,6 +67,7 @@ impl TriggerScopeDAC {
         Ok(())
     }
 
+    #[allow(dead_code)]
     fn query_voltage(&mut self) -> MmResult<f64> {
         let ch = self.channel;
         let cmd = format!("DAC{:02}?\n", ch);

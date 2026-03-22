@@ -74,6 +74,7 @@ impl LdiController {
         })
     }
 
+    #[allow(dead_code)]
     fn wavelength_index(&self, nm: u32) -> Option<usize> {
         self.wavelengths.iter().position(|&w| w == nm)
     }

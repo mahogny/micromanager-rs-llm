@@ -28,6 +28,7 @@ pub struct LaserQuantumLaser {
     is_open: bool,
     power_mw: f64,
     current_pct: f64,
+    #[allow(dead_code)]
     max_power_mw: f64,
 }
 

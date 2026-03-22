@@ -4,6 +4,6 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-micromanager = { path = "../micromanager" }
+micromanager = { path = ".." }
 
 minifb = "0.28"

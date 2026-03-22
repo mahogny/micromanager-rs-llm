@@ -19,7 +19,7 @@ fn build_andor_sdk3() {
     let sdk_root = std::env::var("ANDOR_SDK3_ROOT").ok().map(PathBuf::from);
 
     let ref_include = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .join("../../mmCoreAndDevices/DeviceAdapters/AndorSDK3");
+        .join("mmCoreAndDevices/DeviceAdapters/AndorSDK3");
 
     let mut build = cc::Build::new();
     build.file("src/adapters/andor_sdk3/shim.c");
@@ -285,7 +285,7 @@ fn build_twain() {
     let sdk_root = std::env::var("TWAIN_SDK_ROOT").ok().map(PathBuf::from);
 
     let ref_include = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
-        .join("../../mmCoreAndDevices/DeviceAdapters/TwainCamera");
+        .join("mmCoreAndDevices/DeviceAdapters/TwainCamera");
 
     let mut build = cc::Build::new();
     build.file("src/adapters/twain/shim.c");

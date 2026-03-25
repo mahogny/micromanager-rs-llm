@@ -107,6 +107,7 @@ pub mod xcite_xt600;
 pub mod xcite;
 pub mod xlight_v3;
 pub mod xlight;
+pub mod xeryon;
 pub mod yodn_e600;
 pub mod yokogawa;
 pub mod zaber;

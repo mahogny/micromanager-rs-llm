@@ -4,6 +4,7 @@ use crate::traits::AdapterModule;
 use crate::types::{DeviceType, PropertyValue};
 
 use crate::adapter_registry::AdapterRegistry;
+use crate::adapters;
 use crate::circular_buffer::{CircularBuffer, ImageFrame};
 use crate::config::{ConfigFile, ConfigGroup};
 use crate::device_manager::DeviceManager;
@@ -22,7 +23,7 @@ pub struct CMMCore {
 
 impl CMMCore {
     pub fn new() -> Self {
-        Self {
+        let mut core = Self {
             registry: AdapterRegistry::new(),
             devices: DeviceManager::new(),
             config_groups: HashMap::new(),
@@ -31,10 +32,35 @@ impl CMMCore {
             shutter_label: None,
             focus_label: None,
             xy_stage_label: None,
-        }
+        };
+        core.register_all_adapters();
+        core
     }
 
     // ─── Adapter registration ────────────────────────────────────────────────
+
+    /// Register all built-in adapter modules.
+    pub fn register_all_adapters(&mut self) {
+        self.register_adapter(Box::new(adapters::arduino::ArduinoAdapter));
+        self.register_adapter(Box::new(adapters::arduino32::Arduino32Adapter));
+        self.register_adapter(Box::new(adapters::arduino_counter::ArduinoCounterAdapter));
+        self.register_adapter(Box::new(adapters::cobolt::CoboltAdapter));
+        self.register_adapter(Box::new(adapters::cobolt_official::CoboltOfficialAdapter));
+        self.register_adapter(Box::new(adapters::coherent_cube::CoherentCubeAdapter));
+        self.register_adapter(Box::new(adapters::coherent_scientific_remote::CoherentScientificRemoteAdapter));
+        self.register_adapter(Box::new(adapters::demo::DemoAdapter));
+        self.register_adapter(Box::new(adapters::esp32::Esp32Adapter));
+        self.register_adapter(Box::new(adapters::microfpga::MicroFpgaAdapter));
+        self.register_adapter(Box::new(adapters::mpb_laser::MpbLaserAdapter));
+        self.register_adapter(Box::new(adapters::openflexure::OpenFlexureAdapter));
+        self.register_adapter(Box::new(adapters::openuc2::Uc2Adapter));
+        self.register_adapter(Box::new(adapters::oxxius_laserboxx::OxxiusLaserBoxxAdapter));
+        self.register_adapter(Box::new(adapters::prizmatix::PrizmatixAdapter));
+        self.register_adapter(Box::new(adapters::teensy_pulse::TeensyPulseAdapter));
+        self.register_adapter(Box::new(adapters::toptica_ibeam::TopticaIBeamAdapter));
+        self.register_adapter(Box::new(adapters::xeryon::XeryonAdapter));
+        self.register_adapter(Box::new(adapters::yodn_e600::YodnE600Adapter));
+    }
 
     /// Register an adapter module so its devices can be loaded.
     pub fn register_adapter(&mut self, module: Box<dyn AdapterModule>) {
@@ -411,6 +437,17 @@ impl CMMCore {
 
     pub fn get_device_type(&self, label: &str) -> MmResult<DeviceType> {
         Ok(self.devices.get_device(label)?.device_type())
+    }
+
+    /// List all registered adapter module names.
+    pub fn get_adapter_names(&self) -> Vec<&str> {
+        self.registry.module_names()
+    }
+
+    /// List available device names for a given adapter module.
+    pub fn get_available_devices(&self, module_name: &str) -> MmResult<Vec<String>> {
+        let module = self.registry.get_module(module_name)?;
+        Ok(module.devices().iter().map(|d| d.name.to_string()).collect())
     }
 }
 

@@ -38,6 +38,14 @@ impl AdapterRegistry {
     pub fn has_module(&self, name: &str) -> bool {
         self.modules.contains_key(name)
     }
+
+    /// Get a reference to a registered adapter module.
+    pub fn get_module(&self, name: &str) -> MmResult<&dyn AdapterModule> {
+        self.modules
+            .get(name)
+            .map(|m| m.as_ref())
+            .ok_or(MmError::NativeModuleFailed)
+    }
 }
 
 impl Default for AdapterRegistry {

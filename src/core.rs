@@ -56,6 +56,7 @@ impl CMMCore {
         self.register_adapter(Box::new(adapters::openuc2::Uc2Adapter));
         self.register_adapter(Box::new(adapters::oxxius_laserboxx::OxxiusLaserBoxxAdapter));
         self.register_adapter(Box::new(adapters::prizmatix::PrizmatixAdapter));
+        self.register_adapter(Box::new(adapters::squid_plus::SquidPlusAdapter));
         self.register_adapter(Box::new(adapters::teensy_pulse::TeensyPulseAdapter));
         self.register_adapter(Box::new(adapters::toptica_ibeam::TopticaIBeamAdapter));
         self.register_adapter(Box::new(adapters::xeryon::XeryonAdapter));

@@ -79,6 +79,7 @@ pub mod scientifica;
 pub mod scopeled;
 pub mod spectral_lmm5;
 pub mod spot;
+pub mod squid_plus;
 pub mod sutter_lambda_arduino;
 pub mod sutter_lambda;
 pub mod sutter_lambda2;

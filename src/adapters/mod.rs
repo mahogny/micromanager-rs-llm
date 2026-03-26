@@ -1,6 +1,7 @@
 pub mod aaaotf;
 pub mod aladdin;
 pub mod andor_sdk3;
+pub mod aravis;
 pub mod aquinas;
 pub mod arduino_counter;
 pub mod arduino;

@@ -12,15 +12,27 @@
 pub const CMD_LENGTH: usize = 8;
 pub const MSG_LENGTH: usize = 24;
 
-// Command codes
+// Command codes — motion
+pub const CMD_MOVE_X: u8 = 0x00;
+pub const CMD_MOVE_Y: u8 = 0x01;
+pub const CMD_MOVE_Z: u8 = 0x02;
 pub const CMD_MOVE_W: u8 = 0x04;
 pub const CMD_HOME_OR_ZERO: u8 = 0x05;
 
+// Command codes — illumination
+pub const CMD_TURN_ON_ILLUMINATION: u8 = 0x0A;
+pub const CMD_TURN_OFF_ILLUMINATION: u8 = 0x0B;
+pub const CMD_SET_ILLUMINATION: u8 = 0x0C;
+
 // Axis identifiers
+pub const AXIS_X: u8 = 0;
+pub const AXIS_Y: u8 = 1;
+pub const AXIS_Z: u8 = 2;
 pub const AXIS_W: u8 = 5;
 
-// Home direction flags
+// Home direction / zero flags
 pub const HOME_NEGATIVE: u8 = 1;
+pub const ZERO: u8 = 2;
 
 // Execution status codes (response byte 1)
 pub const STATUS_COMPLETED: u8 = 0x00;
@@ -58,14 +70,14 @@ pub fn crc8(data: &[u8]) -> u8 {
     crc
 }
 
-/// Build a MOVE_W command packet.
+/// Build a MOVE command for any axis.
 ///
-/// `cmd_id`: rolling command counter (wraps at 256).
+/// `cmd_code`: one of CMD_MOVE_X/Y/Z/W.
 /// `usteps`: signed microstep count (positive = forward).
-pub fn build_move_w(cmd_id: u8, usteps: i32) -> [u8; CMD_LENGTH] {
+pub fn build_move(cmd_id: u8, cmd_code: u8, usteps: i32) -> [u8; CMD_LENGTH] {
     let mut pkt = [0u8; CMD_LENGTH];
     pkt[0] = cmd_id;
-    pkt[1] = CMD_MOVE_W;
+    pkt[1] = cmd_code;
     let bytes = usteps.to_be_bytes();
     pkt[2] = bytes[0];
     pkt[3] = bytes[1];
@@ -75,15 +87,58 @@ pub fn build_move_w(cmd_id: u8, usteps: i32) -> [u8; CMD_LENGTH] {
     pkt
 }
 
-/// Build a HOME_OR_ZERO command for the W axis.
+/// Build a MOVE_W command packet (convenience wrapper).
+pub fn build_move_w(cmd_id: u8, usteps: i32) -> [u8; CMD_LENGTH] {
+    build_move(cmd_id, CMD_MOVE_W, usteps)
+}
+
+/// Build a HOME_OR_ZERO command for an axis.
 ///
-/// Uses HOME_NEGATIVE direction (matching default STAGE_MOVEMENT_SIGN_W = 1).
-pub fn build_home_w(cmd_id: u8) -> [u8; CMD_LENGTH] {
+/// `mode`: HOME_NEGATIVE (1), HOME_POSITIVE (0), or ZERO (2).
+pub fn build_home(cmd_id: u8, axis: u8, mode: u8) -> [u8; CMD_LENGTH] {
     let mut pkt = [0u8; CMD_LENGTH];
     pkt[0] = cmd_id;
     pkt[1] = CMD_HOME_OR_ZERO;
-    pkt[2] = AXIS_W;
-    pkt[3] = HOME_NEGATIVE;
+    pkt[2] = axis;
+    pkt[3] = mode;
+    pkt[7] = crc8(&pkt[..7]);
+    pkt
+}
+
+/// Build a HOME_OR_ZERO command for the W axis (convenience wrapper).
+pub fn build_home_w(cmd_id: u8) -> [u8; CMD_LENGTH] {
+    build_home(cmd_id, AXIS_W, HOME_NEGATIVE)
+}
+
+/// Build TURN_ON_ILLUMINATION command.
+pub fn build_turn_on_illumination(cmd_id: u8) -> [u8; CMD_LENGTH] {
+    let mut pkt = [0u8; CMD_LENGTH];
+    pkt[0] = cmd_id;
+    pkt[1] = CMD_TURN_ON_ILLUMINATION;
+    pkt[7] = crc8(&pkt[..7]);
+    pkt
+}
+
+/// Build TURN_OFF_ILLUMINATION command.
+pub fn build_turn_off_illumination(cmd_id: u8) -> [u8; CMD_LENGTH] {
+    let mut pkt = [0u8; CMD_LENGTH];
+    pkt[0] = cmd_id;
+    pkt[1] = CMD_TURN_OFF_ILLUMINATION;
+    pkt[7] = crc8(&pkt[..7]);
+    pkt
+}
+
+/// Build SET_ILLUMINATION command.
+///
+/// `source`: illumination source index (e.g. 11 = 405nm, 12 = 488nm).
+/// `intensity_u16`: 16-bit intensity value (0–65535).
+pub fn build_set_illumination(cmd_id: u8, source: u8, intensity_u16: u16) -> [u8; CMD_LENGTH] {
+    let mut pkt = [0u8; CMD_LENGTH];
+    pkt[0] = cmd_id;
+    pkt[1] = CMD_SET_ILLUMINATION;
+    pkt[2] = source;
+    pkt[3] = (intensity_u16 >> 8) as u8;
+    pkt[4] = (intensity_u16 & 0xFF) as u8;
     pkt[7] = crc8(&pkt[..7]);
     pkt
 }
@@ -156,5 +211,45 @@ mod tests {
         buf[0] = 5;
         buf[MSG_LENGTH - 1] = 0xFF; // wrong CRC
         assert!(parse_response(&buf).is_none());
+    }
+
+    #[test]
+    fn move_z_packet() {
+        let pkt = build_move(1, CMD_MOVE_Z, 1000);
+        assert_eq!(pkt[1], CMD_MOVE_Z);
+        let bytes = 1000i32.to_be_bytes();
+        assert_eq!(pkt[2..6], bytes);
+    }
+
+    #[test]
+    fn home_z_packet() {
+        let pkt = build_home(2, AXIS_Z, HOME_NEGATIVE);
+        assert_eq!(pkt[1], CMD_HOME_OR_ZERO);
+        assert_eq!(pkt[2], AXIS_Z);
+        assert_eq!(pkt[3], HOME_NEGATIVE);
+    }
+
+    #[test]
+    fn illumination_on_off() {
+        let on = build_turn_on_illumination(3);
+        assert_eq!(on[1], CMD_TURN_ON_ILLUMINATION);
+        let off = build_turn_off_illumination(4);
+        assert_eq!(off[1], CMD_TURN_OFF_ILLUMINATION);
+    }
+
+    #[test]
+    fn set_illumination_packet() {
+        let pkt = build_set_illumination(5, 11, 32768);
+        assert_eq!(pkt[1], CMD_SET_ILLUMINATION);
+        assert_eq!(pkt[2], 11); // source: 405nm
+        assert_eq!(pkt[3], 0x80); // 32768 >> 8
+        assert_eq!(pkt[4], 0x00); // 32768 & 0xFF
+    }
+
+    #[test]
+    fn zero_axis_packet() {
+        let pkt = build_home(0, AXIS_X, ZERO);
+        assert_eq!(pkt[2], AXIS_X);
+        assert_eq!(pkt[3], ZERO);
     }
 }

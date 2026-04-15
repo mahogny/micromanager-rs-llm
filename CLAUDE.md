@@ -5,46 +5,60 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```sh
-# Build everything
+# Build everything (no vendor SDKs needed by default)
 cargo build --workspace
 
 # Run all tests
 cargo test --workspace
 
-# Test a single crate
-cargo test -p mm-adapter-zaber
+# Test a single adapter module
+cargo test zaber
 
 # Test a single test by name
-cargo test -p mm-adapter-zaber move_absolute
+cargo test zaber::stage::tests::move_absolute
 
 # Check without building
 cargo check --workspace
+
+# Run the demo (DemoCamera + minifb window)
+cargo run -p mm-demo
 ```
+
+Feature-gated SDK adapters: `cargo build --features andor-sdk3` (requires `ANDOR_SDK3_ROOT`). Other SDK features: `aravis`, `basler`, `daheng`, `jai`, `picam`, `spot`, `tsi`, `twain`, `iidc`, `opencv`.
 
 ## Architecture
 
-This is a pure-Rust port of MicroManager (`mmCoreAndDevices`). The original C++ source lives in `mmCoreAndDevices/` for reference only — it is never compiled.
+Pure-Rust port of [MicroManager](https://micro-manager.org/) (`mmCoreAndDevices`). The original C++ source lives in `mmCoreAndDevices/` for reference only — it is never compiled.
 
-### Three-layer structure
+### Single-crate structure
 
-**`mm-device`** — trait definitions only, no hardware logic:
-- `traits.rs` — `Device` (base) + device-type traits (`Camera`, `Stage`, `XYStage`, `Shutter`, `StateDevice`, `Hub`, etc.), plus `AnyDevice` enum for type-safe dispatch and `AdapterModule` for registration
-- `property.rs` — `PropertyMap` embedded in every device struct (analogous to `CDeviceBase<T,U>`)
-- `transport.rs` — `Transport` trait (`send`, `receive_line`, `send_recv`, `send_bytes`, `receive_bytes`) + `MockTransport` for tests
+Everything lives in one library crate (`micromanager`) with two workspace members: `.` (the library) and `mm-demo` (demo binary). There are no separate `mm-device` or `mm-core` crates — the README's three-layer description is logical, not physical.
+
+**Core modules** (`src/`):
+- `traits.rs` — `Device` (base) + device-type traits (`Camera`, `Stage`, `XYStage`, `Shutter`, `StateDevice`, `Hub`, etc.), `AnyDevice` enum, `AdapterModule`
+- `property.rs` — `PropertyMap` embedded in every device struct
+- `transport.rs` — `Transport` trait (`send`, `receive_line`, `send_recv`, `send_bytes`, `receive_bytes`) + `MockTransport`
 - `types.rs` — `PropertyValue`, `DeviceType`, `MmError`
+- `core.rs` — `CMMCore` orchestrator: loads devices via `AdapterRegistry`, dispatches to `DeviceManager`, manages `CircularBuffer`
+- `device_manager.rs`, `adapter_registry.rs`, `circular_buffer.rs`, `config.rs`
 
-**`mm-core`** — the engine, depends on `mm-device`:
-- `CMMCore` orchestrates everything: loads devices via `AdapterRegistry`, dispatches to `DeviceManager`, manages `CircularBuffer` for sequences
-- Adapters register via `CMMCore::register_adapter(Box<dyn AdapterModule>)` at runtime (no dynamic linking)
-
-**`adapters/mm-adapter-*`** — one crate per hardware family, depends only on `mm-device`:
-- Each implements `Device` + the appropriate device-type trait(s)
-- Embed `PropertyMap` and `Option<Box<dyn Transport>>`
-- Use `with_transport(Box<dyn Transport>)` builder pattern; tests inject `MockTransport`
+**Adapters** (`src/adapters/`): ~100+ submodules, one per hardware family. Each adapter module contains device structs that implement `Device` + the appropriate trait(s).
 
 ### Key patterns used in every adapter
 
 ```rust
+// Device struct — always embeds PropertyMap + optional Transport
+pub struct FooStage {
+    props: PropertyMap,
+    transport: Option<Box<dyn Transport>>,
+    // ... device-specific state
+}
+
+// Builder for injecting transport (tests use MockTransport)
+pub fn with_transport(mut self, t: Box<dyn Transport>) -> Self {
+    self.transport = Some(t); self
+}
+
 // Transport dispatch — avoids lifetime issues
 fn call_transport<R, F>(&mut self, f: F) -> MmResult<R>
 where F: FnOnce(&mut dyn Transport) -> MmResult<R> { ... }
@@ -77,9 +91,15 @@ MockTransport::new()
 
 ### Adding a new adapter
 
-1. `cargo new --lib adapters/mm-adapter-<name>` with `mm-device = { path = "../../mm-device" }` dependency
-2. Add `"adapters/mm-adapter-<name>"` to workspace `Cargo.toml`
+1. Create `src/adapters/<name>/mod.rs` (and sub-files as needed)
+2. Add `pub mod <name>;` to `src/adapters/mod.rs`
 3. Implement `Device` + the device-type trait(s); embed `PropertyMap` and `Option<Box<dyn Transport>>`
 4. Add a row to the adapter table in `README.md`
 
-Adapters that require vendor SDKs (closed DLLs / proprietary C headers) cannot be implemented as pure serial adapters and should be skipped or flagged — e.g. `KuriosLCTF` (Thorlabs Windows DLLs), `Okolab` (`okolib.h`), `Lumencor` main adapter (`LightEngineAPI`).
+### Build system (`build.rs`)
+
+Uses `cc` to compile C/C++ shim files for vendor SDK adapters, gated behind Cargo features. Each SDK adapter looks for an environment variable (e.g., `ANDOR_SDK3_ROOT`, `EBUS_SDK_ROOT`). Default builds require no vendor SDKs.
+
+### SDK-dependent adapters
+
+Adapters requiring vendor SDKs (closed DLLs / proprietary C headers) cannot be pure serial — e.g. `KuriosLCTF` (Thorlabs Windows DLLs), `Okolab` (`okolib.h`), `Lumencor` main adapter (`LightEngineAPI`). These should be skipped or flagged.
